@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/placeposts" name="posts" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/{postId}">
+        <inSequence>
+            <call>
+                <endpoint key="postById"/>
+            </call>
+            <enrich>
+                <source clone="true" type="body"/>
+                <target property="gabriel" type="property"/>
+            </enrich>
+            <property expression="json-eval($.userId)" name="uri.var.userId" scope="default" type="STRING"/>
+            <call>
+                <endpoint key="userById"/>
+            </call>
+            <enrich>
+                <source clone="true" type="body"/>
+                <target property="raulino" type="property"/>
+            </enrich>
+            <log level="custom">
+                <property expression="get-property('gabriel')" name="gab"/>
+                <property expression="get-property('raulino')" name="rau"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>{&#xd;
+				"name":"$1",&#xd;
+				"email":"$2",&#xd;
+				"title":"$3",&#xd;
+				"body":"$4"&#xd;
+				}</format>
+                <args>
+                    <arg evaluator="json" expression="$ctx:raulino.name"/>
+                    <arg evaluator="json" expression="$ctx:raulino.email"/>
+                    <arg evaluator="json" expression="$ctx:gabriel.title"/>
+                    <arg evaluator="json" expression="$ctx:gabriel.body"/>
+                </args>
+            </payloadFactory>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
