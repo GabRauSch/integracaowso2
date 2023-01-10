@@ -43,6 +43,13 @@
     <resource methods="GET" uri-template="/userposts/{userId}">
         <inSequence>
             <call>
+                <endpoint key="userById"/>
+            </call>
+            <enrich>
+                <source clone="true" type="body"/>
+                <target property="userInfo" type="property"/>
+            </enrich>
+            <call>
                 <endpoint key="getAllPosts"/>
             </call>
             <foreach expression="json-eval($)">
@@ -50,9 +57,22 @@
                     <filter regex="1" source="json-eval($.userId)">
                         <then>
                             <log level="custom">
-                                <property name="fafa" value="deu certissimo"/>
-                                <property expression="json-eval($.userId)" name="idd"/>
+                                <property expression="json-eval($ctx:userInfo.email)" name="idd"/>
                             </log>
+                            <payloadFactory media-type="json">
+                                <format>{&#xd;
+"name": "$1",&#xd;
+"email":"$2",&#xd;
+"title": "$3",&#xd;
+"body":"$4"&#xd;
+}</format>
+                                <args>
+                                    <arg evaluator="json" expression="$ctx:userInfo.username"/>
+                                    <arg evaluator="json" expression="$ctx:userInfo.email"/>
+                                    <arg evaluator="json" expression="$.title"/>
+                                    <arg evaluator="json" expression="$.body"/>
+                                </args>
+                            </payloadFactory>
                         </then>
                         <else>
                             <drop/>

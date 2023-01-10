@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/testes" name="testes" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/{userId}">
+        <inSequence>
+            <call>
+                <endpoint key="userById"/>
+            </call>
+            <log level="custom">
+                <property expression="json-eval($)" name="users"/>
+            </log>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
