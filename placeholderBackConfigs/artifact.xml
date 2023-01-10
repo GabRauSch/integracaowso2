@@ -14,4 +14,7 @@
     <artifact name="userById" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/userById.xml</file>
     </artifact>
+    <artifact name="getAllPosts" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/getAllPosts.xml</file>
+    </artifact>
 </artifacts>

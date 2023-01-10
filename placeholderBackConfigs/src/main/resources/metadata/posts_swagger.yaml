@@ -19,3 +19,16 @@ paths:
       responses:
         default:
           description: Default response
+  /userposts/{userId}:
+    get:
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response

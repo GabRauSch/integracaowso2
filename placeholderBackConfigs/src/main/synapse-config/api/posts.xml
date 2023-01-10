@@ -40,4 +40,29 @@
         <outSequence/>
         <faultSequence/>
     </resource>
+    <resource methods="GET" uri-template="/userposts/{userId}">
+        <inSequence>
+            <call>
+                <endpoint key="getAllPosts"/>
+            </call>
+            <foreach expression="json-eval($)">
+                <sequence>
+                    <filter regex="1" source="json-eval($.userId)">
+                        <then>
+                            <log level="custom">
+                                <property name="fafa" value="deu certissimo"/>
+                                <property expression="json-eval($.userId)" name="idd"/>
+                            </log>
+                        </then>
+                        <else>
+                            <drop/>
+                        </else>
+                    </filter>
+                </sequence>
+            </foreach>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
 </api>
