@@ -1,0 +1,87 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "inputType" : "JSON",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "id" : "http://wso2jsonschema.org/id",
+      "type" : "number"
+    },
+    "name" : {
+      "id" : "http://wso2jsonschema.org/name",
+      "type" : "string"
+    },
+    "username" : {
+      "id" : "http://wso2jsonschema.org/username",
+      "type" : "string"
+    },
+    "email" : {
+      "id" : "http://wso2jsonschema.org/email",
+      "type" : "string"
+    },
+    "address" : {
+      "id" : "http://wso2jsonschema.org/address",
+      "type" : "object",
+      "properties" : {
+        "street" : {
+          "id" : "http://wso2jsonschema.org/address/street",
+          "type" : "string"
+        },
+        "suite" : {
+          "id" : "http://wso2jsonschema.org/address/suite",
+          "type" : "string"
+        },
+        "city" : {
+          "id" : "http://wso2jsonschema.org/address/city",
+          "type" : "string"
+        },
+        "zipcode" : {
+          "id" : "http://wso2jsonschema.org/address/zipcode",
+          "type" : "string"
+        },
+        "geo" : {
+          "id" : "http://wso2jsonschema.org/address/geo",
+          "type" : "object",
+          "properties" : {
+            "lat" : {
+              "id" : "http://wso2jsonschema.org/address/geo/lat",
+              "type" : "string"
+            },
+            "lng" : {
+              "id" : "http://wso2jsonschema.org/address/geo/lng",
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "phone" : {
+      "id" : "http://wso2jsonschema.org/phone",
+      "type" : "string"
+    },
+    "website" : {
+      "id" : "http://wso2jsonschema.org/website",
+      "type" : "string"
+    },
+    "company" : {
+      "id" : "http://wso2jsonschema.org/company",
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "id" : "http://wso2jsonschema.org/company/name",
+          "type" : "string"
+        },
+        "catchPhrase" : {
+          "id" : "http://wso2jsonschema.org/company/catchPhrase",
+          "type" : "string"
+        },
+        "bs" : {
+          "id" : "http://wso2jsonschema.org/company/bs",
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

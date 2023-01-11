@@ -1,0 +1,12 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+outputroot =  {};
+outputroot.name = inputroot.name;
+outputroot.username = inputroot.username;
+outputroot.email = inputroot.email;
+return outputroot;
+};
+
+
+

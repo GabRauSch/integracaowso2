@@ -15,15 +15,19 @@
   <description>placeholderBackCompositeExporter</description>
   <properties>
     <com.example.api_._testes>capp/EnterpriseServiceBus</com.example.api_._testes>
+    <com.example.resource_._gabr_outputSchema>capp/EnterpriseServiceBus</com.example.resource_._gabr_outputSchema>
     <com.example.endpoint_._postById>capp/EnterpriseServiceBus</com.example.endpoint_._postById>
     <com.example.endpoint_._getAllPosts>capp/EnterpriseServiceBus</com.example.endpoint_._getAllPosts>
-    <com.example.metadata_._posts_metadata>capp/EnterpriseServiceBus</com.example.metadata_._posts_metadata>
     <com.example.metadata_._testes_metadata>capp/EnterpriseServiceBus</com.example.metadata_._testes_metadata>
+    <com.example.resource_._gabr>capp/EnterpriseServiceBus</com.example.resource_._gabr>
+    <com.example.api_._posts>capp/EnterpriseServiceBus</com.example.api_._posts>
+    <com.example.resource_._gabr_inputSchema>capp/EnterpriseServiceBus</com.example.resource_._gabr_inputSchema>
+    <com.example.metadata_._posts_metadata>capp/EnterpriseServiceBus</com.example.metadata_._posts_metadata>
     <com.example.metadata_._posts_swagger>capp/EnterpriseServiceBus</com.example.metadata_._posts_swagger>
+    <com.example.resource_._gabr_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.resource_._gabr_xsltStyleSheet>
     <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,synapse/metadata=yaml,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
     <com.example.metadata_._testes_swagger>capp/EnterpriseServiceBus</com.example.metadata_._testes_swagger>
     <com.example.endpoint_._userById>capp/EnterpriseServiceBus</com.example.endpoint_._userById>
-    <com.example.api_._posts>capp/EnterpriseServiceBus</com.example.api_._posts>
   </properties>
   <dependencies>
     <dependency>
@@ -31,6 +35,12 @@
       <artifactId>testes</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>gabr_outputSchema</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
     </dependency>
     <dependency>
       <groupId>com.example.endpoint</groupId>
@@ -46,13 +56,31 @@
     </dependency>
     <dependency>
       <groupId>com.example.metadata</groupId>
-      <artifactId>posts_metadata</artifactId>
+      <artifactId>testes_metadata</artifactId>
       <version>1.0.0</version>
       <type>yaml</type>
     </dependency>
     <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>gabr</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.api</groupId>
+      <artifactId>posts</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>gabr_inputSchema</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
       <groupId>com.example.metadata</groupId>
-      <artifactId>testes_metadata</artifactId>
+      <artifactId>posts_metadata</artifactId>
       <version>1.0.0</version>
       <type>yaml</type>
     </dependency>
@@ -63,6 +91,12 @@
       <type>yaml</type>
     </dependency>
     <dependency>
+      <groupId>com.example.resource</groupId>
+      <artifactId>gabr_xsltStyleSheet</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
       <groupId>com.example.metadata</groupId>
       <artifactId>testes_swagger</artifactId>
       <version>1.0.0</version>
@@ -71,12 +105,6 @@
     <dependency>
       <groupId>com.example.endpoint</groupId>
       <artifactId>userById</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
-      <groupId>com.example.api</groupId>
-      <artifactId>posts</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>

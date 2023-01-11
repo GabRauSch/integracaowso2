@@ -52,27 +52,15 @@
             <call>
                 <endpoint key="getAllPosts"/>
             </call>
+            <property name="data" scope="default" type="JSON" value="[]"/>
             <foreach expression="json-eval($)">
                 <sequence>
                     <filter regex="1" source="json-eval($.userId)">
                         <then>
-                            <log level="custom">
-                                <property expression="json-eval($ctx:userInfo.email)" name="idd"/>
-                            </log>
-                            <payloadFactory media-type="json">
-                                <format>{&#xd;
-"name": "$1",&#xd;
-"email":"$2",&#xd;
-"title": "$3",&#xd;
-"body":"$4"&#xd;
-}</format>
-                                <args>
-                                    <arg evaluator="json" expression="$ctx:userInfo.username"/>
-                                    <arg evaluator="json" expression="$ctx:userInfo.email"/>
-                                    <arg evaluator="json" expression="$.title"/>
-                                    <arg evaluator="json" expression="$.body"/>
-                                </args>
-                            </payloadFactory>
+                            <enrich>
+                                <source clone="true" type="body"/>
+                                <target action="child" property="data" type="property"/>
+                            </enrich>
                         </then>
                         <else>
                             <drop/>
@@ -80,6 +68,21 @@
                     </filter>
                 </sequence>
             </foreach>
+            <payloadFactory media-type="json">
+                <format>{&#xd;
+"user": {&#xd;
+	"name": "$1"&#xd;
+	"email":"$2"&#xd;
+},&#xd;
+"posts": $3&#xd;
+&#xd;
+}</format>
+                <args>
+                    <arg evaluator="json" expression="$ctx:userInfo.name"/>
+                    <arg evaluator="json" expression="$ctx:userInfo.email"/>
+                    <arg evaluator="json" expression="$ctx:data"/>
+                </args>
+            </payloadFactory>
             <respond/>
         </inSequence>
         <outSequence/>
