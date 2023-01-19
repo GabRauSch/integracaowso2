@@ -1,0 +1,34 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+outputroot =  [];
+outputroot[0] =  {};
+outputroot[0].id = inputroot.id;
+outputroot[0].name = inputroot.name;
+outputroot[0].username = inputroot.username;
+outputroot[0].email = inputroot.email;
+outputroot[0].street = inputroot.address.street;
+outputroot[0].suite = inputroot.address.suite;
+outputroot[0].city = inputroot.address.city;
+outputroot[0].zipcode = inputroot.address.zipcode;
+outputroot[0].phone = inputroot.phone;
+outputroot[0].website = inputroot.website;
+outputroot[0].companyName = inputroot.company.name;
+outputroot[0].companycatchPhrase = inputroot.company.catchPhrase;
+outputroot[0].companyBs = inputroot.company.bs;
+return outputroot;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+

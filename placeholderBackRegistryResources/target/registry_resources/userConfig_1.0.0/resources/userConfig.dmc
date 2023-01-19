@@ -1,0 +1,32 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+outputroot =  {};
+outputroot.id = inputroot.id;
+outputroot.name = inputroot.name;
+outputroot.username = inputroot.username;
+outputroot.email = inputroot.email;
+outputroot.street = inputroot.address.street;
+outputroot.suite = inputroot.address.suite;
+outputroot.city = inputroot.address.city;
+outputroot.zipcode = inputroot.address.zipcode;
+outputroot.phone = inputroot.phone;
+outputroot.website = inputroot.website;
+outputroot.companyName = inputroot.company.name;
+outputroot.companycatchPhrase = inputroot.company.catchPhrase;
+outputroot.companyBs = inputroot.company.bs;
+return outputroot;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+

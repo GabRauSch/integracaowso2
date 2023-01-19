@@ -1,0 +1,65 @@
+{
+  "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+  "outputType" : "JSON",
+  "id" : "http://wso2jsonschema.org",
+  "title" : "root",
+  "type" : "array",
+  "items" : [ {
+    "properties" : {
+      "id" : {
+        "id" : "http://wso2jsonschema.org/0/id",
+        "type" : "number"
+      },
+      "name" : {
+        "id" : "http://wso2jsonschema.org/0/name",
+        "type" : "string"
+      },
+      "username" : {
+        "id" : "http://wso2jsonschema.org/0/username",
+        "type" : "string"
+      },
+      "email" : {
+        "id" : "http://wso2jsonschema.org/0/email",
+        "type" : "string"
+      },
+      "street" : {
+        "id" : "http://wso2jsonschema.org/0/street",
+        "type" : "string"
+      },
+      "suite" : {
+        "id" : "http://wso2jsonschema.org/0/suite",
+        "type" : "string"
+      },
+      "city" : {
+        "id" : "http://wso2jsonschema.org/0/city",
+        "type" : "string"
+      },
+      "zipcode" : {
+        "id" : "http://wso2jsonschema.org/0/zipcode",
+        "type" : "string"
+      },
+      "phone" : {
+        "id" : "http://wso2jsonschema.org/0/phone",
+        "type" : "string"
+      },
+      "website" : {
+        "id" : "http://wso2jsonschema.org/0/website",
+        "type" : "string"
+      },
+      "companyName" : {
+        "id" : "http://wso2jsonschema.org/0/companyName",
+        "type" : "string"
+      },
+      "companycatchPhrase" : {
+        "id" : "http://wso2jsonschema.org/0/companycatchPhrase",
+        "type" : "string"
+      },
+      "companyBs" : {
+        "id" : "http://wso2jsonschema.org/0/companyBs",
+        "type" : "string"
+      }
+    },
+    "id" : "http://wso2jsonschema.org/0",
+    "type" : "object"
+  } ]
+}

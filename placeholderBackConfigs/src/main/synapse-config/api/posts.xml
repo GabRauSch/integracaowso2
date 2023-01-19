@@ -52,7 +52,7 @@
             <call>
                 <endpoint key="getAllPosts"/>
             </call>
-            <property name="data" scope="default" type="JSON" value="[]"/>
+            <property name="data" scope="default" type="STRING" value="[]"/>
             <foreach expression="json-eval($)">
                 <sequence>
                     <filter regex="1" source="json-eval($.userId)">
@@ -88,4 +88,103 @@
         <outSequence/>
         <faultSequence/>
     </resource>
+    <resource methods="GET" uri-template="/search/{string}">
+        <inSequence>
+            <property expression="$ctx:uri.var.string" name="search" scope="default" type="STRING"/>
+            <call>
+                <endpoint key="getAllPosts"/>
+            </call>
+            
+            <property name="data" scope="default" type="STRING" value="[]"/>
+            
+            <foreach expression="json-eval($.)">
+                <sequence>
+                    <property name="title" expression="json-eval($.title)"/>
+                    <property name="body" expression="json-eval($.body)"/>
+                    <property name="text" expression="fn:concat($ctx:title, $ctx:body)"/>
+                    <property name="contains" expression="fn:contains($ctx:text, $ctx:search)"/>
+
+                    <log level="custom">
+                        <property name="text" expression="json-eval($.title)"/>
+                        <property name="searchlog" expression="$ctx:search"></property>
+                        <property name="contains" expression="fn:contains($ctx:title, $ctx:search)"/>
+                    </log>
+
+                    <filter regex="true" source="get-property('contains')">
+                        <then>
+                            <enrich>
+                                <source clone="true" type="body"/>
+                                <target action="child" property="data" type="property"/>
+                            </enrich>
+                        </then>
+                        <else/>
+                    </filter>
+                </sequence>
+            </foreach>
+
+            <payloadFactory media-type="json">
+                <format>{&#xd;
+"data": $1
+                }</format>
+                <args>
+                    <arg evaluator="json" expression="$ctx:data"/>
+                </args>
+            </payloadFactory>
+
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+
+
+
+    <resource methods="GET" uri-template="/user/search">
+        <inSequence>
+            <sequence  key="postIdSeq"/>
+            <property expression="$ctx:query.param.info" name="info"/>
+            
+            
+            <call>
+                <endpoint key="getAllUsers"/>
+            </call>
+
+            <property name="data" scope="default" type="STRING" value="[]"/>
+            
+            <foreach expression="json-eval($.)">
+                <sequence>
+                <property name="name" expression="json-eval($.name)"/>
+                <property name="user" expression="json-eval($.username)"/>
+                <property name="company" expression="json-eval($.company.name)"/>
+
+                <property name="comparableSource" expression="fn:concat($ctx:name, $ctx:user, $ctx:company)"/>
+                <property name="contains" expression="fn:contains($ctx:comparableSource, $ctx:info)"/>
+
+                <filter regex="true" source="get-property('contains')">
+                    <then>
+                        <enrich>
+                            <source clone="true" type="body"/>
+                            <target action="child" property="data" type="property"/>
+                        </enrich>
+                    </then>
+                    <else/>
+                </filter>
+                </sequence>
+            </foreach>
+
+            <payloadFactory media-type="json">
+                <format>{&#xd;
+"data": $1
+                }</format>
+                <args>
+                    <arg evaluator="json" expression="$ctx:data"/>
+                </args>
+            </payloadFactory>
+
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+
 </api>
