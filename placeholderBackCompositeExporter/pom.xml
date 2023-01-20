@@ -31,6 +31,7 @@
     <com.example.resource_._gabr_outputSchema>capp/EnterpriseServiceBus</com.example.resource_._gabr_outputSchema>
     <com.example.resource_._userConfig_outputSchema>capp/EnterpriseServiceBus</com.example.resource_._userConfig_outputSchema>
     <com.example.endpoint_._postById>capp/EnterpriseServiceBus</com.example.endpoint_._postById>
+    <com.example.endpoint_._getAllPhotos>capp/EnterpriseServiceBus</com.example.endpoint_._getAllPhotos>
     <com.example.resource_._userComplete_outputSchema>capp/EnterpriseServiceBus</com.example.resource_._userComplete_outputSchema>
     <com.example.resource_._userComplete>capp/EnterpriseServiceBus</com.example.resource_._userComplete>
     <com.example.resource_._gabr>capp/EnterpriseServiceBus</com.example.resource_._gabr>
@@ -143,6 +144,12 @@
     <dependency>
       <groupId>com.example.endpoint</groupId>
       <artifactId>postById</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>getAllPhotos</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>

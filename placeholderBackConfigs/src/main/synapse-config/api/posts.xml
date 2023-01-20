@@ -141,10 +141,7 @@
 
     <resource methods="GET" uri-template="/user/search">
         <inSequence>
-            <sequence  key="postIdSeq"/>
-            <property expression="$ctx:query.param.info" name="info"/>
-            
-            
+            <property expression="$ctx:query.param.info" name="info"/>            
             <call>
                 <endpoint key="getAllUsers"/>
             </call>
@@ -186,5 +183,24 @@
         <outSequence/>
         <faultSequence/>
     </resource>
+
+
+
+    <resource methods="GET" uri-template="/user/{userId}/albums">
+        <inSequence>
+        
+            <log level="custom">
+                <property name="var" expression="$ctx:uri.var.userId"/>
+            </log>
+            <call>
+                <endpoint key="albumByUserId"/>
+            </call>
+
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+
 
 </api>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <api context="/testes" name="testes" xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="GET" uri-template="/{userId}">
+    <resource methods="GET">
         <inSequence>
-            <datamapper config="gov:datamapper/userComplete.dmc" inputSchema="gov:datamapper/userComplete_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/userComplete_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/userComplete_xsltStyleSheet.xml"/>
+            <call>
+                <endpoint key="getAllUsers"/>
+            </call>
             <respond/>
         </inSequence>
         <outSequence/>
